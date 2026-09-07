@@ -1,0 +1,6 @@
+CompileFlags:
+    Add:
+        - "-I/lib/modules/6.18.43-gentoo-dist-bin/build/include"
+        - "-I/lib/modules/6.18.43-gentoo-dist-bin/build/arch/x86/include"
+        - "-D__KERNEL__"
+        - "-DMODULE"
