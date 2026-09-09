@@ -5,3 +5,5 @@
 *.order
 *.symvers
 *.cmd
+break_/
+.break_/linux/
