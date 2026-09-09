@@ -11,7 +11,7 @@ static int __init buggy_init(void)
 {
     int *ptr = NULL;
 
-    pr_info("buggy_module: Loading module and dereferencing NULL...\n");
+	printk(KERN_INFO "Testing kyller1 module buggy module");
 
 	//as you can see, this is a null pointer write
 	//this should...trigger a page fault, let's see
