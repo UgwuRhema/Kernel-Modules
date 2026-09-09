@@ -1,6 +1,6 @@
-obj-m += hello.o
+obj-m += firstmod.o
 
-KDIR := /lib/modules/$(shell uname -r)/build
+KDIR := ./break_/linux 
 PWD := $(shell os_pwd || pwd)
 
 default:
