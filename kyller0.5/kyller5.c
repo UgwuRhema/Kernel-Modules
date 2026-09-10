@@ -14,12 +14,14 @@ MODULE_LICENSE("GPL");
 //says like okay i dont got no resources anymore it raises the exception #PF the another one will run
 //and haha 2 fault = double faults...definiately panic! kyller0.5 is not failing
 
-static void recurse(void) noinline;
+static noinline void recurse(void);
 
 //fix?
-static void __attribte__((__noinline__)) recurse(void)
+static noinline void recurse(void)
 {
-	recurse(); //recursion infintely...
+	void (volatile *fn)(void) = &recurse; //ok since direct calling triggered -Winfinite-recursion
+										  //let's use function pointers, got this info from someone that function pointers hide the call path, lets stest it out
+	fn();
 }
 
 static int __init boom(void)
