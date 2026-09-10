@@ -7,3 +7,4 @@
 *.cmd
 break_/
 .break_/linux/
+*.d
