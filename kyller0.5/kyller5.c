@@ -14,7 +14,7 @@ MODULE_LICENSE("GPL");
 //says like okay i dont got no resources anymore it raises the exception #PF the another one will run
 //and haha 2 fault = double faults...definiately panic! kyller0.5 is not failing
 
-static void __attribute__((noinline)) recurse(void)
+static void recurse(void) __attribute__((noinline))
 {
 	recurse(); //recursion infintely...
 }
@@ -28,10 +28,10 @@ static int __init boom(void)
 
 //who knows if this would be possible..but i doubt
 //the recursions might happen so quickly, and system might even get buggy just liek a fork bomb
-static void __exit exit(void)
+static void __exit outboom(void)
 {
 	printk(KERN_INFO "Will this even be reachable? lets find out, I AM EXIT!\n");
 }
 
 module_init(boom);
-module_exit(exit);
+module_exit(outboom);
