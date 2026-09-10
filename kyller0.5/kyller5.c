@@ -19,7 +19,7 @@ static noinline void recurse(void);
 //fix?
 static noinline void recurse(void)
 {
-	void (volatile *fn)(void) = &recurse; //ok since direct calling triggered -Winfinite-recursion
+	void (*volatile fn)(void) = &recurse; //ok since direct calling triggered -Winfinite-recursion
 										  //let's use function pointers, got this info from someone that function pointers hide the call path, lets stest it out
 	fn();
 }
