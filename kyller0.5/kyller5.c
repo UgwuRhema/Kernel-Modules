@@ -7,6 +7,8 @@ MODULE_DESCRIPTION("Kyller0.5 exploit module, a different approach");
 MODULE_VERSION("0.5");
 MODULE_LICENSE("GPL");
 
+#define NOINLINE __attribute__((noinline)) //let's try this method
+
 //we are taking a differnet approach...
 //we will do an infinite recursion so as to cause a double fault
 //i understand the concepts of CPU exception since ive made them before for my OS
@@ -14,7 +16,9 @@ MODULE_LICENSE("GPL");
 //says like okay i dont got no resources anymore it raises the exception #PF the another one will run
 //and haha 2 fault = double faults...definiately panic! kyller0.5 is not failing
 
-static void recurse(void) __attribute__((noinline))
+static void recurse(void) NOINLINE;
+
+static void recurse(void) NOINLINE
 {
 	recurse(); //recursion infintely...
 }
