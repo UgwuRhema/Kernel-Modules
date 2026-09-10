@@ -16,7 +16,8 @@ MODULE_LICENSE("GPL");
 
 static void recurse(void) noinline;
 
-static void recurse(void) noinline
+//fix?
+static void __attribte__((__noinline__)) recurse(void)
 {
 	recurse(); //recursion infintely...
 }
