@@ -12,7 +12,8 @@ static noinline void overflow(int digit)
 	volatile char dummy[512]; //I dont know, this is code i just snagged of somewhere
 	//it said its consume stack frame space, i'll look into that
 	dummy[0] = digit;
-	overflow(digit + 1);
+	void (*ov)(int) = &overflow;
+	ov(digit + 1);
 
 	//this is to prevent GCC from turning a call function into a jmp, because of Tail Call Optimization
 	//giving it work prevents this
